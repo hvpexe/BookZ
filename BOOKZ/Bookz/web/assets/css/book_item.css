@@ -1,0 +1,208 @@
+.most_download > div {
+    padding: 0;
+}
+
+.book-item-card {
+    font-size: 1em;
+    padding: 1em 0 0;
+    display: flex;
+    flex-direction: column;
+}
+.book.card img,.upload-img  img{
+    max-width: 400px;
+    aspect-ratio: 190 / 285;
+    width: 100%;
+}
+.book-item-card .meta {
+    padding: 0.5em;
+}
+.book_list {
+    background: white;
+}
+.book {
+    margin: 15px auto;
+    border: 1px solid var(--border-theme-color);
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.book .book_cover {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-theme-color);
+}
+.book .book_cover img {
+    width: 80%;
+    border: 1px dotted rgb(170, 170, 170);
+    margin: 10px 15px;
+}
+
+.book .book_info {
+    text-align: center;
+}
+
+.book .book_info .title {
+    font-weight: 500;
+    margin: 3px 0 auto;
+}
+.book .book_info .title a {
+
+    color: var(--side-theme-color);
+    cursor: pointer;
+}
+.book .book_info .title a:hover {
+    text-decoration: underline;
+}
+.book .book_info .title a:active {
+    font-weight: bold;
+    text-decoration: none;
+
+}
+.book .book_info .author {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.book-item-card img {
+    width: 100%;
+
+}
+/*Bootstrap edit*/
+.list-group-item-action:focus, .list-group-item-action:hover {
+    z-index: unset;
+    color: #495057;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+.list-group-item-action:hover:active {
+    color: #212529;
+    background-color: #e9ecef;
+}
+/*Upload Book*/
+#book_upload-title {
+    background: orangered;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+#book_upload {
+    border: 3px solid orangered;
+    padding: 0.25em;
+    background: white;
+}
+
+#book_upload > div:first-child {
+    background: white;
+    border-bottom: 3px solid orangered;
+    padding: 15px;
+    margin: auto;
+    
+}
+#book_upload section {
+    margin: 1vh 0;
+}
+@media (min-width:792px){
+    #book_upload section:first-child {
+        border-right: 2px solid orangered;
+       
+    }
+}
+#book_upload section:nth-child(2)> div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0;
+}
+#book_upload section:nth-child(2)> div >label {
+    flex-basis: 30%;
+    flex-grow: 0.30;
+    text-align: right;
+    padding-right: 1em;
+}
+#book_upload section:nth-child(2)> div > *:is(input[type=text],textarea,select) {
+    border: 2px orange solid;
+    box-shadow: -3px -9px 20px -19px black inset;
+}
+#book_upload section:nth-child(2)> div > *:is(input,textarea,select){
+    flex-basis: 70%;
+}
+
+#book_upload select :nth-child(2n){
+    background: #f8f9fa;
+}
+#book_upload textarea{
+    height: 200px;
+    width: 70%;
+    resize: none;
+}
+
+#book_upload .upload-img {
+    border: 2px dotted black;
+    margin: 15px;
+}
+
+#book_upload label[for=title] , #book_upload  label[for=author]{
+    position: relative;
+}
+#book_upload label[for=title]::after,#book_upload label[for=author]::after{
+    content: attr(data-info);
+    position: absolute;
+    border: #000 2px solid;
+    border-radius: 20px;
+    width: 200px;
+    z-index: 1;
+    left: -100px;
+    top: 100%;
+    background: white;
+    padding: 0.5em 1em;
+    text-align: center;
+    transition: transform 0.3s,width 0.3s;
+    transition-delay: 0;
+    transform: scale(00%) translate(-110px, -20px);
+}
+#book_upload label[for=title]:hover::after,#book_upload label[for=author]:hover::after{
+    transform: scaleY(100%);
+
+    width: 300px;
+    transition-delay: 0.5s;
+}
+#book_upload .upload-btn {
+    padding: 15px;
+}
+#book_upload .upload-btn .back {
+    margin-top: 10px;
+    height: 50px;
+    
+}
+
+#book_upload .submit {
+    background: var(--main-theme-color);
+    margin: auto;
+    min-width: fit-content;
+    width: 20%;
+    height: 50px;
+    display: block;
+    font-size: x-large;
+    color: white;
+    font-weight: 700;
+}
+#book_upload .upload-btn a {
+    min-width: fit-content;
+    width: 20%;
+    background-color: var(--main-theme-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    font-size: x-large;
+    border-radius: 5px;
+    border: 2px solid black;
+    text-align: center;
+    text-align: center;
+}
+/*External EDIT*/
+[class~=fa-star] {
+    color: gold;
+}
+/*input[type=file]{
+    width: 100px;
+}*/
+

@@ -1,0 +1,39 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+.orange-active {
+    background-color: var(--main-theme-color);
+    color: white;
+}
+.orange-active:hover {
+    background-color: var(--main-theme-color-hover);
+}
+.orange-active:active {
+    background-color: var(--main-theme-color-active);
+}
+#admin_manage_content .top_title {
+    padding: 1em;
+}
+#admin_manage_content form[id=search] {
+    gap: 5px;
+    margin: 1em;
+}
+#admin_manage_content form input {
+    height: 50px;
+}
+#admin_manage_content .bookz_list {
+    background: white;
+}
+#admin_manage_content .bookz_list td img{
+    background: white;
+}
+#admin_manage_content .bookz_list  tr td:first-child{
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'FontAwesome';
+}
+
+#admin_manage_content table td form button{
+    min-width: 100%;
+}
+/*//gui cho thay khai*/

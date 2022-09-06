@@ -1,0 +1,417 @@
+<page contentType="text/html" pageEncoding="UTF-8"></page>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <jsp:include page="index.html" flush="true" />
+    <title>Book Management</title>
+    <link rel="stylesheet" type="text/css" href="./web/bootstrap-4.3.1.min.css">
+    <link rel="stylesheet" type="text/css" href="./fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/header.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./manage.css">
+
+</head>
+
+<body>
+    <jsp:include page="header.jsp" />
+    <div class="section container row">
+        <div class="col-12 ">
+
+            <ul id="admin_manage_links" class="list-group list-group-horizontal">
+                <form onclick="submit()" class="list-group-item list-group-item-action">
+                    Book Management
+                    <input type="hidden" name="tab" value="1">
+                    <input type="hidden" name="action" value="upload">
+                </form>
+                <form onclick="submit()" class="list-group-item list-group-item-action">
+                    Book Request By User
+                    <input type="hidden" name="tab" value="2">
+                    <input type="hidden" name="action" value="upload">
+                </form>
+                <form onclick="submit()" class="list-group-item list-group-item-action">
+                    User Management
+                    <input type="hidden" name="tab" value="3">
+                    <input type="hidden" name="action" value="upload">
+                </form>
+                <form onclick="submit()" class="list-group-item list-group-item-action">
+                    Book Report
+                    <input type="hidden" name="tab" value="4">
+                    <input type="hidden" name="action" value="upload">
+                </form>
+            </ul>
+        </div>
+
+        <div class="col-12 ">
+
+            <div id="admin_manage_content">
+                <div class="top_title row d-flex flex-wrap">
+                    <form class="col-md-8 col-12 row" id="search" action="book">
+                        <input class="col-9" type="text" name="search" value="">
+                        <input type="hidden" name="action" value="search">
+                        <input class="col" type="submit" value="Search">
+                    </form>
+
+                    <button class="col" onclick=''>Add New Book</button>
+                </div>
+                <div style="width: 100%">
+                    <c:forEach items="${bookList}" var="cc" varStatus="c" begin="${p*10-10}" end="${p*10-1}">
+                        <div class="book_item col-12" data-before="${c.index+1}">
+                            <img class="book_item-item_1" src="${cc.cover}" style="aspect-ratio: 190 / 285;" alt="">
+                            <div class="book_item-item_2 d-flex flex-column">
+                                <div><b>Title:</b> ${cc.title}</div>
+                                <div><b>Author:</b> ${cc.author}</div>
+                                <c:if test="${cc.publisher != null}">
+                                    <div><b>Publisher:</b> ${cc.publisher}</div>
+                                </c:if>
+                                <button onclick="location.href = 'book?action=watch&bookid=${cc.bookID}'">Book
+                                    Details</button>
+                                <c:if test="${cc.detail !=null}">
+                                    <div class="bg-white font-italic">${cc.detail}</div>
+                                </c:if>
+
+                            </div>
+                            <div class="book_item-item_3 d-flex flex-wrap align-items-center">
+                                <!--neu muon Chinh button thi cho form bao lai de edit-->
+                                <c:if test="${!cc.isIsAccepted()}">
+                                    <form action="book">
+                                        <button class="bg-success">Accept</button>
+                                        <input type="hidden" name="bookid" value="${cc.bookID}">
+                                        <input type="hidden" name="action" value="accept">
+                                    </form>
+                                </c:if>
+                                <form action="book">
+                                    <button class="bg-white">Delete</button>
+                                    <input type="hidden" name="bookid" value="${cc.bookID}">
+                                    <input type="hidden" name="action" value="delete">
+                                </form>
+                                <form action="book">
+                                    <button class="bg-warning">Update</button>
+                                    <input type="hidden" name="bookid" value="${cc.bookID}">
+                                    <input type="hidden" name="action" value="edit">
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${listSize>1}">
+                        <nav class="d-flex col-12" aria-label="Page navigation example">
+                            <ul class="pagination m-auto">
+                                <li class="page-item ${p-1<1?" disabled":""}">
+                                    <form class="page-link" ${p-1<1?"":"onclick='submit()'"}>
+                                                Previous
+                                                <input type=" hidden" name="p" value="${p-1}">
+                                        <input type="hidden" name="tab" value="${tab}">
+                                        <input type="hidden" name="action" value="upload">
+                                    </form>
+                                </li>
+                                <c:if test="${p-3 > 1}">
+                                    <li class="page-item">
+                                        <form class="page-link ${c.index == p ? " orange-active":""}"
+                                            onclick="submit()">
+                                            1
+                                            <input type="hidden" name="p" value="${1}">
+                                            <input type="hidden" name="tab" value="${tab}">
+                                            <input type="hidden" name="action" value="upload">
+                                        </form>
+                                    </li>
+                                    <li class="page-item">
+                                        <form class="btn disabled ">
+                                            ...
+                                        </form>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${p-3>0?p-3:1}" end="${listSize}" varStatus="c">
+                                    <c:if test="${c.count<=7}">
+                                        <li class="page-item">
+                                            <form class="page-link ${c.index == p ? " orange-active":""}"
+                                                ${c.index==p?"":"onclick='submit()'"}>
+                                                        ${c.index}
+                                                        <input type=" hidden" name="p" value="${c.index}">
+                                                <input type="hidden" name="tab" value="${tab}">
+                                                <input type="hidden" name="action" value="upload">
+                                            </form>
+                                        </li>
+                                    </c:if>
+                                </c:forEach>
+                                <c:if test="${p+3 <listSize}">
+                                    <li class="page-item">
+                                        <form class="btn disabled ">
+                                            ...
+                                        </form>
+                                    </li>
+                                    <li class="page-item">
+                                        <form class="page-link ${c.index == p ? " orange-active":""}"
+                                            onclick="submit()">
+                                            ${listSize}
+                                            <input type="hidden" name="p" value="${listSize}">
+                                            <input type="hidden" name="tab" value="${tab}">
+                                            <input type="hidden" name="action" value="upload">
+                                        </form>
+                                    </li>
+                                </c:if>
+                                <li class="page-item ${p+1>listSize?" disabled":""}">
+                                    <form class="page-link " ${p+1>listSize?"":"onclick='submit()'"} >
+                                        Next
+                                        <input type="hidden" name="p" value="${p+1}">
+                                        <input type="hidden" name="tab" value="${tab}">
+                                        <input type="hidden" name="action" value="upload">
+                                    </form>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:if>
+                </div>
+            </div>
+            <div class="hidden" id="admin_manage_content">
+                <div class="top_title row d-flex flex-wrap">
+                    <form class="col-md-8 col-12 row" id="search" action="book">
+                        <input class="col-9" type="text" name="search" value="">
+                        <input class="col" type="submit" name="search" value="Search">
+                    </form>
+                    <button class="col" onclick='location.replace("uploadBook.jsp");'>Add New Book</button>
+                </div>
+                <div style="width: 100%">
+                    <c:forEach items="${userList}" var="u" varStatus="c" begin="${p*10-10}" end="${p*10-1}">
+                        <div class="book_item col-12" data-before="${c.index+1}">
+                            <img class="book_item-item_1 p-1 m-3" src="${u.avatar}"
+                                style="aspect-ratio: 1 / 1; border: 2px solid gray;" alt="">
+                            <div class="book_item-item_2">
+                                <div><b>Reported User:</b> ${u.firstname} ${u.lastname}</div>
+                                <div><b>User ID:</b> ${u.memberID}</div>
+                                <button onclick="location.href = 'rating?action=detail&rid=${u.ratingID}'">Rating
+                                    Infomation</button>
+                                <div>${u.detail}</div>
+                            </div>
+                            <div class="book_item-item_3 d-flex flex-wrap align-items-center">
+                                <!--neu muon Chinh button thi cho form bao lai de edit-->
+                                <c:if test="${u.memberID ne login.memberID}">
+                                    <c:if test="${u.role eq 'banned'}">
+                                        <form action="manage">
+                                            <button class="bg-success">UNBAN</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="unban">
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${u.role ne 'banned'}">
+                                        <form action="manage" onsubmit="return false">
+                                            <button class="bg-danger">BAN</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="ban">
+                                        </form>
+                                    </c:if>
+                                    <form action="manage" onsubmit="return false">
+                                        <button class="bg-transparent">Delete Comment</button>
+                                        <input type="hidden" name="ratingid" value="${u.ratingID}">
+                                        <input type="hidden" name="action" value="delete">
+                                    </form>
+                                    <c:if test="${u.role eq 'admin'}">
+                                        <form action="manage">
+                                            <button class="bg-warning">Remove Admin</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="makeuser">
+                                        </form>
+                                    </c:if>
+                                </c:if>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${listSize>1}">
+                        <nav class="d-flex col-12" aria-label="Page navigation example">
+                            <ul class="pagination m-auto">
+                                <li class="page-item ${p-1<1?" disabled":""}">
+                                    <form class="page-link" ${p-1<1?"":"onclick='submit()'"}>
+                                                Previous
+                                                <input type=" hidden" name="p" value="${p-1}">
+                                        <input type="hidden" name="tab" value="${tab}">
+                                        <input type="hidden" name="action" value="upload">
+                                    </form>
+                                </li>
+                                <c:if test="${p-3 > 1}">
+                                    <li class="page-item">
+                                        <form class="page-link ${c.index == p ? " tab":""}" onclick="submit()">
+                                            1
+                                            <input type="hidden" name="p" value="${1}">
+                                            <input type="hidden" name="tab" value="${tab}">
+                                            <input type="hidden" name="action" value="upload">
+                                        </form>
+                                    </li>
+                                    <li class="page-item">
+                                        <form class="btn disabled ">
+                                            ...
+                                        </form>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${p-3>0?p-3:1}" end="${listSize}" varStatus="c">
+                                    <c:if test="${c.count<=7}">
+                                        <li class="page-item">
+                                            <form class="page-link ${c.index == p ? " orange-active":""}"
+                                                ${c.index==p?"":"onclick='submit()'"}>
+                                                        ${c.index}
+                                                        <input type=" hidden" name="p" value="${c.index}">
+                                                <input type="hidden" name="tab" value="${tab}">
+                                                <input type="hidden" name="action" value="upload">
+                                            </form>
+                                        </li>
+                                    </c:if>
+                                </c:forEach>
+                                <c:if test="${p+3 <listSize}">
+                                    <li class="page-item">
+                                        <form class="btn disabled ">
+                                            ...
+                                        </form>
+                                    </li>
+                                    <li class="page-item">
+                                        <form class="page-link ${c.index == p ? " orange-active":""}"
+                                            onclick="submit()">
+                                            ${listSize}
+                                            <input type="hidden" name="p" value="${listSize}">
+                                            <input type="hidden" name="tab" value="${tab}">
+                                            <input type="hidden" name="action" value="upload">
+                                        </form>
+                                    </li>
+                                </c:if>
+                                <li class="page-item ${p+1>listSize?" disabled":""}">
+                                    <form class="page-link " ${p+1>listSize?"":"onclick='submit()'"} >
+                                        Next
+                                        <input type="hidden" name="p" value="${p+1}">
+                                        <input type="hidden" name="tab" value="${tab}">
+                                        <input type="hidden" name="action" value="upload">
+                                    </form>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:if>
+                </div>
+            </div>
+            <div class="hidden" id="admin_manage_content">
+                <div class="top_title row d-flex flex-wrap">
+                    <form class="col-12 row" action="manage.jsp">
+                        <input class="col-9" type="text" name="search" value="">
+                        <input class="col" type="submit" name="search" value="Search">
+                    </form>
+                </div>
+                <div style="width: 100%">
+                    <!--${userList}-->
+                    <c:forEach items="${userList}" var="u" varStatus="c" begin="${p*10-10}" end="${p*10-1}">
+                        <div class="book_item col-12" data-before="${c.index+1}">
+                            <img class="book_item-item_1 p-1 m-3" src="${u.avatar}"
+                                style="aspect-ratio: 1 / 1; border: 2px solid gray;" alt="">
+                            <div class="book_item-item_2 d-flex flex-column">
+                                <div><b>UserID:</b> ${u.memberID}</div>
+                                <div><b>User:</b> ${u.firstname}</div>
+                                <div><b>Email:</b> ${u.email}</div>
+                                <div><b>Member Role: </b>${u.role}</div>
+                                <button onclick="location.href = 'member?action=detail&mid=${u.memberID}'">User
+                                    Profile</button>
+                            </div>
+                            <div class="book_item-item_3 d-flex flex-wrap align-items-center">
+                                <!--neu muon Chinh button thi cho form bao lai de edit-->
+                                <c:if test="${u.memberID ne login.memberID}">
+                                    <c:if test="${u.role eq 'banned'}">
+                                        <form action="manage">
+                                            <button class="bg-success">UNBAN</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="unban">
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${u.role ne 'banned'}">
+                                        <form action="manage">
+                                            <button class="bg-danger">BAN</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="ban">
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${u.role eq 'user'}">
+                                        <form action="manage">
+                                            <button class="bg-light">Set Role Admin</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="makeadmin">
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${u.role eq 'admin'}">
+                                        <form action="manage">
+                                            <button class="bg-warning">Remove Admin</button>
+                                            <input type="hidden" name="userid" value="${u.memberID}">
+                                            <input type="hidden" name="action" value="makeuser">
+                                        </form>
+                                    </c:if>
+                                </c:if>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${listSize>1}">
+                        <nav class="d-flex col-12" aria-label="Page navigation example">
+                            <ul class="pagination m-auto">
+                                <li class="page-item ${p-1<1?" disabled":""}">
+                                    <form class="page-link" ${p-1<1?"":"onclick='submit()'"}>
+                                                Previous
+                                                <input type=" hidden" name="p" value="${p-1}">
+                                        <input type="hidden" name="tab" value="${tab}">
+                                        <input type="hidden" name="action" value="upload">
+                                    </form>
+                                </li>
+                                <c:if test="${p-3 > 1}">
+                                    <li class="page-item">
+                                        <form class="page-link ${c.index == p ? " orange-active":""}"
+                                            onclick="submit()">
+                                            1
+                                            <input type="hidden" name="p" value="${1}">
+                                            <input type="hidden" name="tab" value="${tab}">
+                                            <input type="hidden" name="action" value="upload">
+                                        </form>
+                                    </li>
+                                    <li class="page-item">
+                                        <form class="btn disabled ">
+                                            ...
+                                        </form>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${p-3>0?p-3:1}" end="${listSize}" varStatus="c">
+                                    <c:if test="${c.count<=7}">
+                                        <li class="page-item">
+                                            <form class="page-link ${c.index == p ? " orange-active":""}"
+                                                ${c.index==p?"":"onclick='submit()'"}>
+                                                        ${c.index}
+                                                        <input type=" hidden" name="p" value="${c.index}">
+                                                <input type="hidden" name="tab" value="${tab}">
+                                                <input type="hidden" name="action" value="upload">
+                                            </form>
+                                        </li>
+                                    </c:if>
+                                </c:forEach>
+                                <c:if test="${p+3 < listSize}">
+                                    <li class="page-item">
+                                        <form class="btn disabled ">
+                                            ...
+                                        </form>
+                                    </li>
+                                    <li class="page-item">
+                                        <form class="page-link ${c.index == p ? " orange-active":""}"
+                                            onclick="submit()">
+                                            ${listSize}
+                                            <input type="hidden" name="p" value="${listSize}">
+                                            <input type="hidden" name="tab" value="${tab}">
+                                            <input type="hidden" name="action" value="upload">
+                                        </form>
+                                    </li>
+                                </c:if>
+                                <li class="page-item ${p+1>listSize?" disabled":""}">
+                                    <form class="page-link " ${p+1>listSize?"":"onclick='submit()'"} >
+                                        Next
+                                        <input type="hidden" name="p" value="${p+1}">
+                                        <input type="hidden" name="tab" value="${tab}">
+                                        <input type="hidden" name="action" value="upload">
+                                    </form>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

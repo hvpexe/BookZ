@@ -1,0 +1,38 @@
+:root {
+    --main-theme-color: orangered;
+    --main-theme-color-hover: rgb(221, 59, 0);
+    --main-theme-color-active: rgb(255 91 32);
+    --side-theme-color: #1C1C1C;
+    --border-theme-color: #9c9c9c;
+    --web-background-color: #DAE0E6;
+    --title-font: 1em;
+}
+
+.category_section {
+    background-color: #F2F2F2;
+}
+.category_name {
+    color: var(--side-theme-color);
+    padding: 5px 15px 8px;
+    font-size: 30px;
+}
+
+.category_sort .category_sort_select {
+    background-color: var(--main-theme-color);
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    margin-left: 15px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.category_sort .category_sort_nonselect {
+    background-color: #fff;
+    color: var(--main-theme-color);
+    border: 1px solid var(--main-theme-color);
+    padding: 3px 8px;
+    margin-left: 15px;
+    font-size: 14px;
+    border-radius: 10px;
+}

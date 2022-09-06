@@ -1,0 +1,234 @@
+.gallery-wrap .img-big-wrap img {
+    width: auto;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 15px;
+    border: 1px dotted var(--border-theme-color); 
+    width: 100% !important;
+    aspect-ratio: 190 / 285;
+    /*margin: 1em 0;*/
+    box-sizing: border-box;
+}
+
+.button {
+    text-align: center;
+    width:100%
+}
+.item-side {
+    float: right;
+}
+
+.book-container .title {
+    font-size: 36px;
+}
+.rating-overall {
+    aspect-ratio:1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.rating-overall div:first-child{
+    width: auto;height: auto;
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: fangsong;
+}
+.rate-star div{
+
+    width: calc(135px/5);
+    height: 25px;
+    background: transparent;
+    top: 5px;
+    left: calc(var(--i)*27px - 27px);
+    color: transparent;
+    cursor: pointer;
+}
+a .bubble {
+    display: none;
+    cursor: context-menu;
+}
+a .bubble {
+    background: #84b000;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 20px;
+    line-height: 120px;
+    box-shadow: 5px 5px 2px 0px #a3a3a3;
+    text-align: center;
+    width: max-content;
+    border-radius: 10px;
+    padding: 0px;
+    top: 77%;
+    left: 88px;
+    z-index: 1;
+    transform: scale(0.5);
+}
+.bubble:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 1;
+    border-style: solid;
+    border-width: 37px 0 0 28px;
+    border-color: transparent transparent transparent #84b000;
+    top: -37px;
+    left: 13%;
+    margin-left: -14px;
+}
+.comment img {
+    aspect-ratio:1;
+}
+.comment .comment-button .collapse{
+    z-index: 1;
+}
+/*progress*/
+progress {
+    height: 25px;
+    padding: 0;
+    margin-bottom: 0px;
+    margin: 0 5px 0;
+
+}
+/*stars*/
+.star-5::before{
+    content: "\f005\f005\f005\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+.star-4::before{
+    content: "\f005\f005\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+.star-4::after{
+    content: "\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+.star-3::before{
+    content: "\f005\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+.star-3::after{
+    content: "\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+.star-2::before{
+    content: "\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+.star-2::after{
+    content: "\f005\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+.star-1::before{
+    content: "\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+.star-1::after{
+    content: "\f005\f005\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+.star-0::before{
+    content: "\f005\f005\f005\f005\f005";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+/*tag edit*/
+textarea {
+    resize: none;
+    overflow: hidden;
+    /*    width: 0;
+        height: 0;
+        transition: all 0.2s;
+        transform: scale(0);*/
+}
+textarea[form^=edit]{
+    inset:0;
+    overflow-y: scroll;
+    z-index: 0;
+    right: 50%;
+}
+.top_title {
+    width: 100%;
+    background: transparent;
+    border-bottom: rgba(0,0,0,0.1) solid thin; 
+}
+
+/*report*/
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: var(--main-title-color);
+    color: var(--main-theme-color);
+    font-size: 20px;
+    border: 2px solid var(--main-theme-color);
+    padding: 16px 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    z-index: 9;
+    display: none;
+    background-color: var(--web-background-color);
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 450px;
+    padding: 10px;
+    background-color: #ff7d4d;
+    text-align: center;
+    color: var(side-theme-color);
+    border-radius: 10px;
+    /*opacity:0.6;*/
+}
+
+/* Full-width input fields */
+.form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+}
+
+/* When the inputs get focus, do something */
+.form-container select, 
+.form-container textarea {
+    background-color: var(--web-background-color);
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}

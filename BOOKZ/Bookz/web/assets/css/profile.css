@@ -1,0 +1,232 @@
+:root {
+    --main-theme-color: orangered;
+    --main-theme-color-hover: rgb(221, 59, 0);
+    --main-theme-color-active: rgb(255 91 32);
+    --side-theme-color: #1C1C1C;
+    --main-title-color: #fff;
+    --border-theme-color: #9c9c9c;
+    --web-background-color: #f1f1f1;
+    --title-font: 1em;
+}
+
+
+*:focus {
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* dung chung */
+.profile-header {
+    background-color: var(--web-background-color);
+}
+
+.info-title {
+    color: var(--side-theme-color);
+    padding: 8px 20px 10px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/*  */
+.profile-img {
+    text-align: center;
+    position: relative;
+}
+
+.profile-img img {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.profile-img .file {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    color: var(--main-title-color);
+    background: #212529b8;
+    left: 0;
+    bottom: 0;
+}
+
+.profile-img .file:hover {
+    color: var(--main-title-color);
+    background: rgba(255, 68, 0, 0.562);
+}
+
+.profile-img .file input {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.profile-name {
+    text-align: center;
+    font-weight: 500;
+    font-size: 22px;
+    padding: 10px;
+}
+#profile-function li {
+    padding: 10px 5px;
+    color: var(--side-theme-color);
+    border: 2px solid var(--side-theme-color);
+    margin: 6px 0;
+    cursor: pointer;
+    user-select: none;
+    padding: 12px 8px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.function-select {
+    background: var(--main-theme-color);
+    color: var(--main-title-color) !important;
+}
+#profile-function li:hover {
+    background: var(--main-theme-color);
+    color: var(--main-title-color);
+}
+
+/*your information */
+
+.infor-detail {
+    border: 1px solid var(--border-theme-color);
+    /* background-color: var(--web-background-color); */
+    padding: 20px;
+    font-family: "Gill Sans", sans-serif;
+    line-height: 40px;
+    font-size: 24px;
+
+
+}
+
+.infor-detail>div {
+    padding-left: 20px;
+}
+
+.infor-detail:first-child {
+    padding-top: 10px;
+}
+
+#profile-information input[type=submit] {
+    background-color: var(--main-theme-color);
+    border: none;
+    color: var(--main-title-color);
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 15px auto;
+    display: block;
+}
+
+#profile-information input[type=file] {
+
+}
+#profile-information input {
+    margin-bottom: 5px;
+}
+#profile-information button {
+    background-color: var(--main-theme-color);
+    border: none;
+    color: var(--main-title-color);
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 15px auto;
+    display: block;
+}
+
+/* dung chung cho book upload/download */
+.book-table table {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    border-collapse: separate;
+    border-spacing: 2px 8px;
+}
+
+.book-table tr {
+    /* border-spacing: 5px; */
+}
+
+.book-table th {
+    background-color: var(--main-theme-color);
+    border: 1px solid var(--side-theme-color);
+
+    padding: 5px 0;
+    color: var(--main-title-color);
+}
+
+.book-table td {
+    border: 1px solid var(--side-theme-color);
+}
+
+.book-table .book-item-img {
+    width: 80px;
+    margin: 5px 0;
+    border: 1px dotted var(--side-theme-color);
+    position: relative;
+}
+
+.book-table button {
+    background-color: var(--main-title-color);
+    border: 2px solid var(--main-theme-color);
+    color: var(--main-theme-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.empty-book {
+    font-size: 36px;
+    text-align: center;
+    color: var(--main-theme-color);
+    padding: 30px;
+}
+
+
+#profile-rating .book-table button {
+    padding: 5px 8px;
+    margin: 3px 0;
+    width: 100%;
+}
+
+.book-table button:hover {
+    background-color: var(--main-theme-color);
+    border: 2px solid var(--main-theme-color);
+    color: var(--main-title-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#profile-change-password .btn-main-theme {
+    background-color: var(--main-theme-color);
+    color: var(--main-title-color);
+}
+
+#profile-change-password .btn-main-theme:hover {
+    background-color: var(--main-theme-color-active);
+}
+
+.form {
+    width: 50%;
+}
+
+.pass-error {
+    color: red;
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+.pass-success {
+    color: green;
+    font-size: 24px;
+    margin-left: 30px;
+}

@@ -1,0 +1,165 @@
+#login {
+    display: none;
+
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+#login .gray_box {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.486);
+    top: 0;
+    bottom: -100%;
+    z-index: 1;
+}
+
+#login .login_box {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+#login .white_box {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    min-width: 20em;
+    width: 50%;
+    max-width: 24em;
+    overflow: hidden;
+    z-index: 2;
+    margin: auto;
+    background-color: white;
+    border-radius: 25px;
+    border: 3.5px inset blanchedalmond;
+}
+
+#login .top_bar {
+    width: 100%;
+    display: flex;
+    border-bottom: 0.1px solid gray;
+    justify-content: space-around;
+    background-color: orangered;
+}
+
+#login :is(.login-btn, .register-btn) {
+    border: 2px inset orangered;
+    border-bottom: none;
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+    margin: 10% 0 0;
+    background-color: cornsilk;
+}
+
+#login :is(.login-btn, .register-btn).active {
+    position: relative;
+    background-color: rgb(240, 240, 240);
+}
+
+#login :is(.login-btn, .register-btn).active::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    z-index: 9;
+    background-color: rgb(240, 240, 240);
+}
+
+:is(#login_form, #register_form) {
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    padding: 2em;
+}
+
+:is(#login_form, #register_form) input {
+    width: 100%;
+    border-radius: 5px;
+    height: 35px;
+    display: inline-block;
+    outline: none;
+}
+
+:is(#login_form, #register_form) button {
+    box-sizing: border-box;
+    width: 8em;
+    margin: 0.5em;
+    border-radius: 5px;
+    margin-left: calc(100% - 8em);
+    background-color: gold;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#login .white_box {
+    position: relative;
+}
+#login input[name$='name'] {
+    width: 47.5%;
+    display: inline-block;
+    float: left;
+}
+#login input[name^='last'] {
+    float: right;
+}
+
+#login .x_button {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    padding: 0;
+    color: coral;
+    background-color: orangered;
+}
+#login .x_button i::before{
+    padding: 0 1em;
+    padding: 5px;
+    font-size: 30px;
+}
+#login .x_button i:hover {
+    color: rgb(158, 42, 0);
+}
+#login .x_button i:active {
+    top: -1.5%;
+}
+#user  {
+    position: relative;
+}
+#user img {
+    box-sizing: content-box;
+    border: 1px black solid;
+    border-radius: 50%;
+    width: 75%;
+    max-width: 45px;
+    min-width: 30px;
+    aspect-ratio: 1/1;
+
+}
+
+#user .user_content{
+    display: none;
+    background: blue;
+    width: 150px;
+    margin: auto;
+    background: white;
+    border: 1px solid black;
+    top:100%;
+    right: 15px;
+    position: absolute;
+    
+}
+#user:hover .user_content{
+    display: block;
+    
+}
+#user:hover .user_content .user-item {
+    display: block;
+    width: 100%;
+    aspect-ratio: unset;
+}
